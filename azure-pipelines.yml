@@ -12,8 +12,15 @@ pool:
 steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)' # Update this to match your need
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+  
